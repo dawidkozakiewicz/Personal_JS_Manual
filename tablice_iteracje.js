@@ -37,3 +37,29 @@ const word3letter = tab3.some(function (el) {
 console.log(word3letter);
 
 
+// map
+
+const numbers = [1.2, 4.5, 9.3];
+
+const absolute = numbers.map(function (el) {
+    return Math.ceil(el);
+});
+console.log(absolute); //[2, 5, 10]
+function multiple3(number) {
+    return number * 3;
+}
+
+var ourTable = [1, 2, 3];
+console.log(ourTable.map(multiple3)); //[3, 6, 9]
+
+
+// filter
+
+const people = ['Marcin', 'Ania', 'Agnieszka', 'Monika', 'Piotrek'];
+
+const woman = people.filter(function (name) {
+    return name.substr(-1) === 'a';
+});
+
+console.log(woman); //["Ania", "Agnieszka", "Monika"]
+

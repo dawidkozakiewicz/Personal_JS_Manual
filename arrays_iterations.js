@@ -63,3 +63,42 @@ const woman = people.filter(function (name) {
 
 console.log(woman); //["Ania", "Agnieszka", "Monika"]
 
+
+// reduce
+
+const tab4 = [1, 2, 3, 4];
+const result = tab4.reduce(function (prev, next) {
+    return prev + next;
+});
+
+const tab5 = [3, 2, 4, 2];
+const result2 = tab5.reduce(function (a, b) {
+    return a * b;
+});
+
+// *** z wartościami początkowymi
+
+const sum1 = [1, 2, 3].reduce(function (a, b) {
+    return a + b;
+}, 0);
+console.log(sum1)
+
+const sum2 = [1, 2, 3].reduce(function (a, b) {
+    return a + b;
+}, "");
+console.log(sum2)
+
+const data = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+const flatArray = data.reduce(function (total, amount) {
+    return total.concat(amount);
+}, []);
+console.log(flatArray)
+
+const data2 = [{ age: 10 }, { age: 12 }, { age: 15 }];
+const age = data2.reduce(function (a, b) {
+    return { age: a.age + b.age };
+}, { age: 0 });
+console.log(age)
+
+
+

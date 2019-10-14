@@ -100,5 +100,52 @@ const age = data2.reduce(function (a, b) {
 }, { age: 0 });
 console.log(age)
 
+// indexOf,  lastIndexOf
+{
+    const tab = ['Marcin', 'Ania', 'Agnieszka', 'Monika', 'Marcin'];
 
+    if (tab.indexOf('Ania') !== -1) {
+        console.log('Ania występuje w tablicy pod indexem ' + tab.indexOf('Ania'));
+    }
+
+
+
+    if (~tab.indexOf('Ania')) {
+        console.log('Ania występuje w tablicy pod indexem ' + tab.indexOf('Ania'));
+    }
+
+    if (tab.lastIndexOf('Marcin') !== -1) {
+        console.log('Ostatnie wystąpienie w tablicy to', tab.lastIndexOf('Marcin'));
+    }
+}
+
+// includes
+{
+    const tab = ['Marcin', 'Ania', 'Agnieszka', 'Monika'];
+
+    if (tab.includes('Ania')) {
+        console.log('Ania występuje w tablicy pod indexem ' + tab.indexOf('Ania'));
+    }
+
+    if (!tab.includes('Pies')) {
+        console.log('Pies nie występuje w tej tablicy');
+    }
+}
+
+// łańcuchowość metod
+
+{
+    const tab = ['Marcin', 'Ania', 'Agnieszka'];
+
+
+    const newTab = tab.map(function (el) { //zwracam nową tablicę...
+        return el.toUpperCase()
+    }).filter(function (el) { //więc mogę ją odfiltrować
+        return el[el.length - 1].toUpperCase() === "A"
+    }).map(function (el) { //map też może służyć do iteracji
+        return el + "!";
+    }).forEach(function (el) {
+        console.log(el);
+    }) //forEach nie zwraca tablicy więc nie mogę już tutaj działać jak na tablicy
+}
 

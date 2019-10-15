@@ -37,7 +37,7 @@ const word3letter = tab3.some(function (el) {
 console.log(word3letter);
 
 
-// map
+// map - zwraca nową tablicę
 
 const numbers = [1.2, 4.5, 9.3];
 
@@ -53,7 +53,7 @@ var ourTable = [1, 2, 3];
 console.log(ourTable.map(multiple3)); //[3, 6, 9]
 
 
-// filter
+// filter -zwraca nową tablicę
 
 const people = ['Marcin', 'Ania', 'Agnieszka', 'Monika', 'Piotrek'];
 
@@ -149,3 +149,62 @@ console.log(age)
     }) //forEach nie zwraca tablicy więc nie mogę już tutaj działać jak na tablicy
 }
 
+// ***ALBO***
+{
+    const tab = ['Marcin', 'Ania', 'Agnieszka'];
+
+    const upper = function (el) {
+        return el.toUpperCase();
+    }
+
+    const checkIsWoman = function (el) {
+        return el.substr(-1).toUpperCase() === "A"; //naiwny test
+    }
+
+    const addExclamationMark = function (el) {
+        return el + "!"
+    }
+
+    const newTab = tab
+        .map(upper)
+        .filter(checkIsWoman)
+        .map(addExclamationMark);
+
+    console.log(newTab)
+}
+
+// findIndex
+{
+    const tab = [
+        { name: "Monika", gender: "w" },
+        { name: "Agata", gender: "w" },
+        { name: "Marcin", gender: "m" },
+        { name: "Patrycja", gender: "w" }
+    ]
+
+    const index = tab.findIndex(function (el) {
+        return el.gender === "m"
+    })
+
+    console.log("index pasującego elementu:", index);
+    console.log("Pasujący element:", tab[index]);
+}
+
+// ***zastosowanie***
+
+{
+    const tab = [
+        { name: "Monika", gender: "w" },
+        { name: "Agata", gender: "w" },
+        { name: "Marcin", gender: "m" },
+        { name: "Patrycja", gender: "w" }
+    ]
+
+    const index = tab.findIndex(function (el) {
+        return el.gender === "m"
+    })
+
+    tab.splice(index, 1);
+
+    console.log(tab); //same kobiety
+}

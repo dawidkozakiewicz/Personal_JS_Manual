@@ -144,3 +144,37 @@
     console.log(text);
     console.log(textChanged);
 }
+
+// encodeURI
+
+{
+    const text = "Ala ma kota, a kot ma Alę...";
+
+    console.log("Przed: " + text); //Ala ma kota, a kot ma Alę...
+    console.log("Po: " + encodeURI(text)); //Ala%20ma%20kota%2C%20a%20kot%20ma%20Al%u0119...
+}
+
+// decodeURI
+
+{
+    let text = "Ala ma kota, a kot ma Alę...";
+
+    text = encodeURI(text);
+
+    console.log("Przed: " + text); //Ala%20ma%20kota%2C%20a%20kot%20ma%20Al%u0119...
+    console.log("Po: " + decodeURI(text)); //Ala ma kota, a kot ma Alę...
+}
+
+// repeat 
+
+{
+    const text = "kot";
+    console.log(text.repeat(2)); //kotkot
+
+    let str = "";
+    for (let i = 0; i < 2; i++) {
+        str += text;
+    }
+    console.log(str); //kotkot
+}
+

@@ -198,3 +198,117 @@
     console.log(tab6); //[Agnieszka, Monika]
 }
 
+
+// splice
+
+{
+    const tab = ['Marcin', 'Ania', 'Agnieszka'];
+
+    tab.splice(1, 1); //od indexu 1 usuwam 1 element
+    console.log(tab); //wypisze "Marcin, Agnieszka"
+
+    tab.splice(1, 0, 'Monika', 'Magda') //nic nie usuwam i wstawiam nowe elementy przed index 1
+    console.log(tab); //wypisze "Marcin, Monika, Magda, Agnieszka"
+}
+
+{
+    const tab = ['Marcin', 'Ania', 'Agnieszka', 'Monika'];
+    const delEl = tab.splice(2, 1);
+    console.log(tab); //wypisze 'Marcin', 'Ania', 'Monika'
+    console.log(delEl); //wypisze 'Agnieszka'
+}
+
+{
+    const tab = ['Marcin', 'Ania', 'Agnieszka', 'Monika'];
+
+    //1 - który index,
+    //0 - ile elementów usunąć,
+    //'Piotr' - element
+    tab.splice(1, 0, 'Piotr');
+
+    console.log(tab); //[Marcin, Piotr, Ania, Agnieszka, Monika]
+}
+
+// fill
+
+{
+    const tab = new Array(20);
+    console.log(tab); //[empty x 20]
+    tab.fill(0);
+    console.log(tab); //[0, 0, 0, ...]
+
+
+    const tab2 = [];
+    tab2.length = 15;
+    console.log(tab2); //[empty x 15]
+    tab2.fill(0, 2, 5);
+    console.log(tab2); //[empty × 2, 0, 0, 5, empty × 10]
+
+
+    const tab3 = [1, 2, 3, 4, 5];
+    tab3.fill("x", 2);
+    console.log(tab3); //[1, 2,"x", "x", "x"]
+}
+
+{
+    const tab = new Array(10);
+
+    //forEach i map pomijają puste miejsca, dlatego musimy tablicę wypełnić
+    const nr = tab.fill(0).map((el, i) => i);
+    console.log(nr); //[0,1,2,3,4,5,6,7,8,9];
+
+    const randomTab = tab.fill(0).map(el => Math.floor(Math.random() * 10) + 1);
+    console.log(randomTab);
+}
+
+// flat - eksperymentalne, nie wszędzie zaimplementowane
+
+// {
+//     const tab = [
+//         1,
+//         [2, 3],
+//         [4, 5, [6, 7]],
+//         [[[8, 9], [10, 11]]]
+//     ]
+
+//     console.log(tab.flat(1));
+// }
+
+// {
+//     const tab = [
+//         1,
+//         [2, 3],
+//         [4, 5, [6, 7]],
+//         [[[8, 9], [10, 11]]]
+//     ]
+
+//     console.log(tab.flat(2));
+// }
+
+// {
+//     const tab = [
+//         1,
+//         [2, 3],
+//         [4, 5, [6, 7]],
+//         [[[8, 9], [10, 11]]]
+//     ]
+
+//     console.log(tab.flat(Infinity)); //[1,2,3,4,5,6,7,8,9,10,11]
+// }
+
+
+
+
+
+// pętla po tablicy
+
+{
+    const tab = ['Marcin', 'Ania', 'Agnieszka'];
+
+    for (let i = 0; i < tab.length; i++) {
+        console.log('licznik pętli: ' + i); //0, 1...
+        console.log('element: ' + tab[i]); //tab[0], tab[1]...
+    }
+}
+
+

@@ -42,3 +42,29 @@ const car = {
 console.log(car.color); //czerwony
 delete car.color;
 console.log(car.color); //undefined
+
+// pętle po obiekcie
+
+{
+    const car = {
+        brand: "Mercedes",
+        color: "czerwony",
+        speed: 150,
+        print: function () {
+            console.log("Marka: ", this.brand);
+            console.log("Kolor: ", this.color);
+            console.log("Szybkość: ", this.speed);
+        }
+    }
+
+    for (const key in car) {
+        console.log(key); //brand, color, speed, print
+    }
+
+
+    for (const key in car) {
+        console.log("Klucz: ", key);
+        console.log("Wartość: ", car[key]);
+    }
+
+}

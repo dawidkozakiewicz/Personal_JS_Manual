@@ -42,7 +42,7 @@
         console.log("Ala ma kota");
     }
 
-
+    // -(x + 1)
     if (~text.indexOf("psa")) {
         console.log("Ala ma psa");
     } else {

@@ -9,7 +9,7 @@ const posts = [
       posts.forEach((post, index) => {
         output += `<li>${post.title}</li>`;
       });
-      document.body.innerHTML = output;
+      document.getElementById("posts").innerHTML = output;
     }, 1000);
   };
   

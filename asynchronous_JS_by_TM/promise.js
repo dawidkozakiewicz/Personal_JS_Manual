@@ -9,7 +9,7 @@ getPosts = () => {
     posts.forEach((post, index) => {
       output += `<li>${post.title}</li>`;
     });
-    document.body.innerHTML = output;
+    document.getElementById("posts").innerHTML = output;
   }, 1000);
 };
 
@@ -50,6 +50,7 @@ Promise.all([promise1, promise2, promise3, promise4]).then(values =>
 const loadData = function(name) {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
+    console.log(xhr)
     xhr.addEventListener("load", () => resolve(xhr.response));
     xhr.addEventListener("error", () => reject(xhr.statusText));
     xhr.open(
@@ -64,6 +65,9 @@ const loadData = function(name) {
 loadData("poland")
   .then(response => {
     console.log(response);
+    const text = JSON.parse(response);
+    console.log(text)
+    document.getElementById("load").innerHTML = text[0].name
   })
   .catch(statusText => {
     console.log(statusText);

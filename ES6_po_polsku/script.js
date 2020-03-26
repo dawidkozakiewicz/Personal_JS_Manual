@@ -1,0 +1,98 @@
+{
+  //                                                             *** różnice pomiędzy var a let ***
+
+  // var można nadpisać:
+  var camper = "James";
+  var camper = "David";
+  console.log(camper);
+
+  // loguje: 'David'
+
+  // gdyby zamiast var, było let, wyrzuciłoby błąd
+}
+
+//                                                             ***porównanie zasięgu var i let ***
+
+// var ma zasięg funkcyjny bądź globalny, natomiast let ma: blokowy, instrukcji warunkowej, wyrażenia bądź globalny
+
+{
+  var numArray = [];
+  for (var i = 0; i < 3; i = i + 1) {
+    numArray.push(i);
+  }
+  console.log(numArray);
+
+  // zwraca [0, 1, 2]
+  console.log(i);
+
+  // zwraca 3, ponieważ zadeklarowano 'var i' w instrukcji warunkowej, a nie w funkcji, a zatem jest to zmienna globalna
+}
+
+{
+  var numArray2 = [];
+  var x;
+  for (x = 0; x < 3; x = x + 1) {
+    numArray.push(x);
+  }
+  console.log(numArray2);
+
+  // zwraca [0, 1, 2]
+  console.log(x);
+
+  // zwraca 3, ponieważ zadeklarowano 'var x' globalnie
+}
+
+{
+  var printNumTwo;
+  for (var z = 0; z < 3; z = z + 1) {
+    if (z === 2) {
+      printNumTwo = function() {
+        return z;
+      };
+    }
+  }
+  console.log(printNumTwo());
+
+  // zwróci 3, ponieważ przy 3 pętli (0, 1, 2) przypisze do zmiennej globalnej 'printNumTwo' funkcję, potem skończy pętlić inkrementując
+
+  // zmienną globalną 'var z' do wartości 3 i takąż pokaże przy wywołaniu ww. funkcji
+}
+
+{
+  ("use strict");
+  let printNumTwo2;
+  for (let a = 0; a < 3; a = a + 1) {
+    if (a === 2) {
+      printNumTwo2 = function() {
+        return a;
+      };
+    }
+  }
+  console.log(printNumTwo2());
+
+  // zwróci 2 ponieważ nie istnieje tu (z powodu użycia let zamiast var) zmienna globalna 'let a' a zatem zapamięta wartość a z etapu pętli
+
+  // kiedy a było 2
+  try {
+    console.log(a);
+  } catch (err) {
+    console.log(`wyrzuci taki błąd: ${err}`);
+  }
+
+  // wyrzuci błąd "a is not defined" ponieważ z powodu użycia let, zmienna 'a' nie jest dostępna globalnie
+}
+
+{
+  function checkScope() {
+    "use strict";
+    let s = "function scope";
+    if (true) {
+      let s = "block scope";
+      console.log(`Block scope s is: ${s}`); // tu weźmie wrtość s z zasięgu instrukcji warunkowej (blokowo - klamry)
+    }
+    console.log(`Function scope s is: ${s}`); // tu weźmie z zasięgu całej funkcji
+    return s; // tu też całej funkcji
+  }
+
+  console.log(checkScope());
+}

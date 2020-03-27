@@ -13,7 +13,7 @@
 
 //                                                             ***porównanie zasięgu var i let ***
 
-// var ma zasięg funkcyjny bądź globalny, natomiast let ma: blokowy, instrukcji warunkowej, wyrażenia bądź globalny
+// var ma zasięg funkcyjny bądź globalny, natomiast let ma: blokowy, instrukcji warunkowej, wyrażenia, funkcji bądź globalny
 
 {
   var numArray = [];
@@ -95,4 +95,30 @@
   }
 
   console.log(checkScope());
+}
+
+//                                                        ***deklaracja przy pomocy słowa kluczowego const***
+
+const FAV_PET = "Cats";
+// FAV_PET = "Dogs"; zwróciłoby błąd, nie można przypisywać innej wartości
+
+//                                       ***tablice, obiekty i funkcje przypisane do zmiennej 'const' są mutowalne***
+
+{
+  ("use strict");
+  const s = [5, 6, 7];
+  // s = [1, 2, 3]; zwróciłoby błąd, bo przy const nie możemy ponownie przypisywać innej wartości
+  s[2] = 45; // nie zwraca błędu, ponieważ tutaj jedynie mutujemy tablicę
+  console.log(s); //  zwróci [5, 6, 45]
+}
+
+{
+  const s = [5, 7, 2];
+  function editInPlace() {
+    "use strict";
+    s[0] = 2;
+    s[1] = 5;
+    s[2] = 7;
+  }
+  editInPlace();
 }

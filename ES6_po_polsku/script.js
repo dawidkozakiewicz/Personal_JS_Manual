@@ -122,3 +122,51 @@ const FAV_PET = "Cats";
   }
   editInPlace();
 }
+
+//                                                                 ***zapobieganie mutacji obiektów
+{
+  let obj = {
+    name: "FreeCodeCamp",
+    review: "Awesome"
+  };
+  Object.freeze(obj);
+  obj.review = "bad"; // zostanie zignorowane, mutacja niedozwolona
+  obj.newProp = "Test"; // zostanie zignorowane, mutacja niedozwolona
+  console.log(obj);
+}
+
+{
+  function freezeObj() {
+    "use strict";
+    const MATH_CONSTANTS = {
+      PI: 3.14
+    };
+    Object.freeze(MATH_CONSTANTS);
+    try {
+      MATH_CONSTANTS.PI = 99;
+    } catch (ex) {
+      console.log(`oto błąd: ${ex}`);
+    }
+    return MATH_CONSTANTS.PI;
+  }
+freezeObj();
+}
+
+
+//                                                 ***funkcje strzałkowe***
+
+// Gdy nie ma treści funkcji, a jedynie wartość zwracana, składnia funkcji strzałki pozwala pominąć słowo kluczowe return
+//  oraz nawiasy otaczające kod. Pomaga to uprościć mniejsze funkcje do instrukcji jednowierszowych:
+
+const myFunc = () => "value"
+const doubler = (item) => item * 2
+
+// Jeśli funkcja strzałkowa ma pojedynczy argument, nawiasy zawierające argument mogą zostać pominięte:
+
+const doubler2 = item => item * 2;
+
+// Możliwe jest przekazanie więcej niż jednego argumentu do funkcji strzałkowej:
+
+const multiplier = (item, multi) => item * multi;
+
+

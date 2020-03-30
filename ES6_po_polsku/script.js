@@ -71,7 +71,6 @@
   console.log(printNumTwo2());
 
   // zwróci 2 ponieważ nie istnieje tu (z powodu użycia let zamiast var) zmienna globalna 'let a' a zatem zapamięta wartość a z etapu pętli
-
   // kiedy a było 2
   try {
     console.log(a);
@@ -149,21 +148,20 @@ const FAV_PET = "Cats";
     }
     return MATH_CONSTANTS.PI;
   }
-freezeObj();
+  freezeObj();
 }
-
 
 //                                                 ***funkcje strzałkowe***
 
 // Gdy nie ma treści funkcji, a jedynie wartość zwracana, składnia funkcji strzałki pozwala pominąć słowo kluczowe return
 //  oraz nawiasy otaczające kod. Pomaga to uprościć mniejsze funkcje do instrukcji jednowierszowych:
 
-const myFunc = () => "value"
-const doubler = (item) => item * 2
+const myFunc = () => "value";
+const doubler = (item) => item * 2;
 
 // Jeśli funkcja strzałkowa ma pojedynczy argument, nawiasy zawierające argument mogą zostać pominięte:
 
-const doubler2 = item => item * 2;
+const doubler2 = (item) => item * 2;
 
 // Możliwe jest przekazanie więcej niż jednego argumentu do funkcji strzałkowej:
 
@@ -172,6 +170,69 @@ const multiplier = (item, multi) => item * multi;
 //                                                 ***parametr rest***
 
 const sum = (...args) => {
-  return args.reduce((a, b) => a + b, 0); // zero jest tu parametrem początkowym
-  }
+  return args.reduce((a, b) => a + b, 0); // zero jest tu parametrem początkowym, args to spakowane do tablicy argumenty
+};
 console.log(sum(1, 2, 3)); // 6 - zostaje wyeliminowana potrzeba stworzenia tablicy
+
+//                                                 ***operator spread***
+
+const arr = [6, 89, 3, 45];
+const maximus = Math.max(...arr); // metoda Math.max oczekuje argumentów, które trzeba rozpakować z tablicy (Math nie przyjmuje tablic),
+//rest rozpakowuje te tablice
+console.log(maximus);
+
+const arr1 = ["JAN", "FEB", "MAR", "APR", "MAY"];
+let arr2;
+console.log(...arr1);
+arr2 = [...arr1]; // wkładamy argumenty rozpakowane z jednej tablicy na powrót do innej
+console.log(arr2);
+
+//                                                ***destrukturyzacja - wyodrębnianie właściwości z obiektów***
+{
+  const user = { name: "John Doe", age: 34 };
+  const { name, age } = user; // teraz mamy już dostęp właściwości w ogólnym scope:
+  console.log(name, age);
+}
+
+{
+  const user = { name: "John Doe", age: 34 };
+  const { name: userName, age: userAge } = user; // userName = 'John Doe', userAge = 34, wydobywamy właściwości z obiektu, ale nadajemy im nowe nazwy
+  console.log(userName, userAge);
+}
+
+{
+  //destrukturyzacja z obiektu zagnieżdżonego:
+  const user = {
+    johnDoe: {
+      age: 34,
+      email: "johnDoe@freeCodeCamp.com"
+    }
+  };
+  const {
+    johnDoe: { age, email }
+  } = user;
+  console.log(age, email);
+  const {
+    johnDoe: { age: userAge, email: userEmail }
+  } = user;
+  console.log(userAge, userEmail);
+}
+
+//                                                  ***destrukturyzacja tablic***
+
+{
+  const [a, b] = [1, 2, 3, 4, 5, 6];
+  console.log(a, b); // 1, 2
+}
+
+{
+  const [a, b, , , c] = [1, 2, 3, 4, 5, 6];
+  console.log(a, b, c); // 1, 2, 5
+}
+
+{
+// zamiana wartości a i b przy pomocy destrukturyzacji tablic:
+let a = 8, b = 6;
+[b, a] = [a, b] //nie mogliśmy tu użyć przed pierwszym nawiasem 'const' ani 'let' ponieważ już zadeklarowaliśmy te zmienne: 
+console.log(b, a)
+}

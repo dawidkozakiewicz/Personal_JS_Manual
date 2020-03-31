@@ -233,6 +233,20 @@ console.log(arr2);
 {
 // zamiana wartości a i b przy pomocy destrukturyzacji tablic:
 let a = 8, b = 6;
-[b, a] = [a, b] //nie mogliśmy tu użyć przed pierwszym nawiasem 'const' ani 'let' ponieważ już zadeklarowaliśmy te zmienne: 
+[b, a] = [a, b] //nie mogliśmy tu użyć przed pierwszym nawiasem 'const' ani 'let' ponieważ już zadeklarowaliśmy te zmienne
 console.log(b, a)
+}
+
+
+//                                                  ***destrukturyzacja i rest w celu zmiany przypisania elementów tablicy*** 
+{
+const tab = [1, 2, 3, 4, 5, 6, 7, 8, 9,]
+
+const reassignTab = (tabToReassign) => {
+  const [a, b, ...restOfTab] = tabToReassign;
+  return restOfTab
+}
+
+console.log(reassignTab(tab))
+
 }

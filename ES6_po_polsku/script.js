@@ -231,22 +231,60 @@ console.log(arr2);
 }
 
 {
-// zamiana wartości a i b przy pomocy destrukturyzacji tablic:
-let a = 8, b = 6;
-[b, a] = [a, b] //nie mogliśmy tu użyć przed pierwszym nawiasem 'const' ani 'let' ponieważ już zadeklarowaliśmy te zmienne
-console.log(b, a)
+  // zamiana wartości a i b przy pomocy destrukturyzacji tablic:
+  let a = 8,
+    b = 6;
+  [b, a] = [a, b]; //nie mogliśmy tu użyć przed pierwszym nawiasem 'const' ani 'let' ponieważ już zadeklarowaliśmy te zmienne
+  console.log(b, a);
 }
 
-
-//                                                  ***destrukturyzacja i rest w celu zmiany przypisania elementów tablicy*** 
+//                                                  ***destrukturyzacja i rest w celu zmiany przypisania elementów tablicy***
 {
-const tab = [1, 2, 3, 4, 5, 6, 7, 8, 9,]
+  const tab = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-const reassignTab = (tabToReassign) => {
-  const [a, b, ...restOfTab] = tabToReassign;
-  return restOfTab
+  const reassignTab = (tabToReassign) => {
+    const [a, b, ...restOfTab] = tabToReassign;
+    return restOfTab;
+  };
+
+  console.log(reassignTab(tab));
 }
 
-console.log(reassignTab(tab))
+//                                                    ***destrukturyzacja obiektu przekazywanego jako argument funkcji***
+{
+  const stats = {
+    max: 56.78,
+    standard_deviation: 4.34,
+    median: 34.54,
+    mode: 23.87,
+    min: -0.75,
+    average: 35.85
+  };
 
+  const half = ({ max, min }) => {
+    return (max + min) / 2;
+  };
+
+  console.log(half(stats));
+}
+
+//                                                   ***template strings***
+{
+  const result = {
+    success: ["max-length", "no-amd", "prefer-arrow-functions"],
+    failure: ["no-var", "var-on-top", "linebreak"],
+    skipped: ["id-blacklist", "no-dup-keys"]
+  };
+  function makeList(arr) {
+    "use strict";
+    // change code below this line
+    const resultDisplayArray = arr.map((item) => {
+      return `<li class="text-warning">${item}</li>`;
+    });
+    // change code above this line
+    return resultDisplayArray;
+  }
+
+  const resultDisplayArray = makeList(result.failure);
+  console.log(resultDisplayArray);
 }

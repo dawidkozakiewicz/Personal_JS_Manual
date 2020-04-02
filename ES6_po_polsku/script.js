@@ -288,3 +288,65 @@ console.log(arr2);
   const resultDisplayArray = makeList(result.failure);
   console.log(resultDisplayArray);
 }
+
+//                           ***skrót przy zwracaniu obiektu***
+
+{
+  const createPerson = (name, age, gender) => {
+    "use strict";
+    return {
+      name, //zamiast name: name
+      age,
+      gender
+    };
+  };
+}
+
+//                           ***skrót przy deklaracji funkcji w obiekcie***
+{
+  const bicycle = {
+    gear: 2,
+    setGear(newGear) {
+      // zamiast: setGear: function(newGear) {}
+      this.gear = newGear;
+    }
+  };
+  bicycle.setGear(3);
+  console.log(bicycle.gear);
+}
+
+//                           ***klasa***
+{
+  class Vegetable {
+    constructor(name) {
+      this.name = name;
+    }
+  }
+
+  const carrot = new Vegetable("carrot");
+  console.log(carrot.name);
+}
+
+//                      ***getter i setter***
+
+{
+  class Thermostat {
+    constructor(temp) {
+      this._temp = temp;
+    }
+    get temperature() {
+      return (5 / 9) * (this._temp - 32);
+    }
+
+    set temperature(fahr) {
+      this._temp = fahr;
+    }
+  }
+
+  const thermos = new Thermostat(76); // tworząc obiekt wrzucamy stopnie w farenheitach
+  let temp = thermos.temperature; // stosujemy getter - nie piszemy jak w funkcji temperature() tylko bez nawiasu
+  console.log(temp); // oczywiście getter powyżej wyliczył w celsiuszach
+  thermos.temperature = 26; // SETTER -  tutaj po znaku "="" dajemy to, co w funkcji dalibyśmy w nawias: temperature(26)
+  temp = thermos.temperature; // znowu getter, żeby pobrać zaktualizowaną temperaturę
+  console.log(temp);
+}

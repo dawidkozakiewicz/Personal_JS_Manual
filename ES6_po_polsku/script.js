@@ -46,7 +46,7 @@
   var printNumTwo;
   for (var z = 0; z < 3; z = z + 1) {
     if (z === 2) {
-      printNumTwo = function() {
+      printNumTwo = function () {
         return z;
       };
     }
@@ -63,7 +63,7 @@
   let printNumTwo2;
   for (let a = 0; a < 3; a = a + 1) {
     if (a === 2) {
-      printNumTwo2 = function() {
+      printNumTwo2 = function () {
         return a;
       };
     }
@@ -126,7 +126,7 @@ const FAV_PET = "Cats";
 {
   let obj = {
     name: "FreeCodeCamp",
-    review: "Awesome"
+    review: "Awesome",
   };
   Object.freeze(obj);
   obj.review = "bad"; // zostanie zignorowane, mutacja niedozwolona
@@ -138,7 +138,7 @@ const FAV_PET = "Cats";
   function freezeObj() {
     "use strict";
     const MATH_CONSTANTS = {
-      PI: 3.14
+      PI: 3.14,
     };
     Object.freeze(MATH_CONSTANTS);
     try {
@@ -205,15 +205,15 @@ console.log(arr2);
   const user = {
     johnDoe: {
       age: 34,
-      email: "johnDoe@freeCodeCamp.com"
-    }
+      email: "johnDoe@freeCodeCamp.com",
+    },
   };
   const {
-    johnDoe: { age, email }
+    johnDoe: { age, email },
   } = user;
   console.log(age, email);
   const {
-    johnDoe: { age: userAge, email: userEmail }
+    johnDoe: { age: userAge, email: userEmail },
   } = user;
   console.log(userAge, userEmail);
 }
@@ -258,7 +258,7 @@ console.log(arr2);
     median: 34.54,
     mode: 23.87,
     min: -0.75,
-    average: 35.85
+    average: 35.85,
   };
 
   const half = ({ max, min }) => {
@@ -273,7 +273,7 @@ console.log(arr2);
   const result = {
     success: ["max-length", "no-amd", "prefer-arrow-functions"],
     failure: ["no-var", "var-on-top", "linebreak"],
-    skipped: ["id-blacklist", "no-dup-keys"]
+    skipped: ["id-blacklist", "no-dup-keys"],
   };
   function makeList(arr) {
     "use strict";
@@ -297,7 +297,7 @@ console.log(arr2);
     return {
       name, //zamiast name: name
       age,
-      gender
+      gender,
     };
   };
 }
@@ -309,7 +309,7 @@ console.log(arr2);
     setGear(newGear) {
       // zamiast: setGear: function(newGear) {}
       this.gear = newGear;
-    }
+    },
   };
   bicycle.setGear(3);
   console.log(bicycle.gear);
@@ -350,3 +350,22 @@ console.log(arr2);
   temp = thermos.temperature; // znowu getter, żeby pobrać zaktualizowaną temperaturę
   console.log(temp);
 }
+
+//                                    ***promise***
+
+const makeServerRequest = new Promise((resolve, reject) => {
+  let responseFromServer = false;
+  if (responseFromServer) {
+    resolve("We got the data");
+  } else {
+    reject("Data not received");
+  }
+});
+
+makeServerRequest
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((err) => {
+    console.log(err);
+  });

@@ -1,7 +1,7 @@
 {
   //                                                             *** różnice pomiędzy var a let ***
 
-  // var można nadpisać:
+  // var można nadpisać :
   var camper = "James";
   var camper = "David";
   console.log(camper);
@@ -351,7 +351,7 @@ console.log(arr2);
   console.log(temp);
 }
 
-//                                    ***promise***
+//                                    ***promise******
 
 const makeServerRequest = new Promise((resolve, reject) => {
   let responseFromServer = false;

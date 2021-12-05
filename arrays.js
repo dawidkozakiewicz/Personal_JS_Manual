@@ -3,7 +3,7 @@
 {
     const tab = ['Marcin', 'Ania', 'Agnieszka'];
     tab.push('Grzegorz');
-    tab.push('Piotr', 'Karol');
+    tab.push('Piotr', 'Stefan   ');
 
     console.log(tab) //[Marcin, Ania, Agnieszka, Piotr, Karol]
 }

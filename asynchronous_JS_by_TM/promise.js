@@ -16,8 +16,8 @@ getPosts = () => {
 createPost = post => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      posts.push(post);
       if (typeof post === "object") {
+        posts.push(post);
         resolve();
       } else {
         reject("Error: Something went wrong");
@@ -55,7 +55,7 @@ const loadData = function(name) {
     xhr.addEventListener("error", () => reject(xhr.statusText));
     xhr.open(
       "GET",
-      `https://restcountries.eu/rest/v2/name/${name}?fullText=true`,
+      `https://restcountries.com/v2/name/${name}`,
       true
     );
     xhr.send();
@@ -72,3 +72,15 @@ loadData("poland")
   .catch(statusText => {
     console.log(statusText);
   });
+
+  fetch('https://restcountries.com/v2/name/Germany')
+  .then(response => response.json())
+  .then(data => console.log(data));
+
+  const callCountry = async () => {
+    let data = await fetch('https://restcountries.com/v2/name/Russia')
+    data = await data.json()
+    console.log(data)
+}
+
+  callCountry()

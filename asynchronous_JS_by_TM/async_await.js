@@ -35,7 +35,7 @@ const posts = [
 
 // *******************************************************************************************
 
-
+// fetch zwraca promise
   fetchUsers = async () => {
       const res = await fetch('https://jsonplaceholder.typicode.com/users')
       console.log(res)
